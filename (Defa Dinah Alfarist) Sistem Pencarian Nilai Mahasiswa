@@ -1,0 +1,37 @@
+public class SistemPencarianNilaiMahasiswa {
+
+    public static void main(String[] args) {
+        int[] data = {5, 7, 23, 32, 34, 62};
+        int cari = 23; 
+        
+        System.out.println("Mencari angka: " + cari);
+
+        int low = 0;
+        int high = data.length - 1;
+        int langkah = 0;
+        int indeksDitemukan = -1;
+        boolean status = false;
+
+   
+        while (low <= high) {
+            langkah++; 
+            int mid = low + (high - low) / 2;
+
+            if (data[mid] == cari) {
+                indeksDitemukan = mid;
+                status = true;
+                break; 
+            } else if (data[mid] < cari) {
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        System.out.println("Status: " + (status ? "Ditemukan" : "Tidak Ditemukan"));
+        if (status) {
+            System.out.println("Indeks ditemukan: " + indeksDitemukan);
+        }
+        System.out.println("Jumlah langkah pencarian: " + langkah);
+    }
+}
